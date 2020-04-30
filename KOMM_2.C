@@ -798,8 +798,14 @@ met1: for(i=0;i<n_bait;i++)buf_ko[i]=REG_COM_TUMS[st][i]=0;
 		if(ukaz_zap[st]>=SIZE_BUF_OUT)ukaz_zap[st]=0;//¥á«¨ ¤® ª®­æ 
 	}
 	else return; //…‘‹ˆ …’ ŠŒ€„› - ‚›‰’ˆ
-	if(st==0)outportb(BAZ_ADR1+1,3); //€‡…˜ˆ’œ ……„€—“ ‚ Š€€‹
-	if(st==1)outportb(BAZ_ADR11+1,3);
+
+	//w(274, 999, "BUF_OUT");
+	//nom_func("527+");
+        setcolor(2); outtextxy(1, 31, "Û");
+
+	//if(st==0)
+	outportb(BAZ_ADR1+1,0x03); //€‡…˜ˆ’œ ……„€—“ ‚ Š€€‹
+	//if(st==1)outportb(BAZ_ADR11+1,3);
 	otkaz_tu[st]=0;
 	return;
 }

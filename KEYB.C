@@ -813,6 +813,7 @@ void WIN_MAIN()
 	int objk,strlk,i;
 	nom_func("416");
 	if(DISK!=0)return;
+
   if(klaval==0)
 	{
 		klaval=getch();
@@ -1026,7 +1027,7 @@ RAZD:             for(i=0;i<=(3*skoko_stoek);i++)
     case 27: home(modi);show_kursor(-1);
     case 32: sbros_all();nosound();t(0);return;
     case 9:  if((otv_kom==1)||(DU==1))return;
-             if(STATUS==1)Zona_k();
+	     if(STATUS==1)Zona_k();
              return;
 		case 13:
 
@@ -1083,7 +1084,7 @@ RAZD:             for(i=0;i<=(3*skoko_stoek);i++)
              {
                make_razdelka();
                return;
-             }
+	     }
              switch(markery[i3][7]&0xfff)
              {
                case 1:  if(avap==1)
@@ -1116,7 +1117,7 @@ RAZD:             for(i=0;i<=(3*skoko_stoek);i++)
                         { menu_N=3;
                           punkt_N=1;
                           klaval=-1;
-                          regs.x.ax=4;//переместить курсор к меню
+			  regs.x.ax=4;//переместить курсор к меню
                           regs.x.cx=590;
 													regs.x.dx=40;
 													int86(0x33,&regs,&regs);
@@ -1161,7 +1162,7 @@ Metka_B:                  zapretvybora=0;
                         {
                           nomer=markery[modi][6];
 													if(uprav==1)poka=0;
-                          perstr();
+			  perstr();
                           if(net_kontro==1)goto Metka_B;
                           else goto Metka_C;
 												}
@@ -1173,7 +1174,7 @@ Metka_B:                  zapretvybora=0;
                case 4:  make_put();return;
                case 5:  make_put();return;
 
-               case 6:  make_smena();return;
+	       case 6:  make_smena();return;
 #ifdef VSP
                case 8:  make_vspom_priem();return;
                case 9:  make_vspom_otpr();return;
@@ -1340,6 +1341,7 @@ void keyboard()
 	int i;
 	nom_func("118");
 	if(DISK!=0)return;
+
 	prorisovka=0;
 	if(timer_set==15){set_timers();return;}//если начата установка часов
 #ifndef WORK
@@ -1471,7 +1473,14 @@ void keyboard()
   if((soob_for_oper>0)&&(osya==0)){WIN_SOOB();return;}
 m_win:
   STACK=_SP;
-	WIN_MAIN();//основное окно работы программы с реакцией на клавиши
+
+  /*
+  if (klaval == 114);
+  else;
+  */
+
+  WIN_MAIN();//основное окно работы программы с реакцией на клавиши
+
   STACK=_SP;
   return;
 }

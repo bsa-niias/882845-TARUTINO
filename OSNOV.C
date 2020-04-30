@@ -1303,6 +1303,24 @@ void menu()
 void nom_func(char proga[5])
 {
 	int cvets;
+
+//	FILE* hDebugFile;
+//	struct time ct;
+
+//#ifdef NALAD_F
+/*
+   hDebugFile = fopen ("func.dbg", "a");
+   if (hDebugFile != NULL)
+   {
+      gettime (&ct);
+      fprintf (hDebugFile, "%02d:%02d:%02d : %s\n",
+		 ct.ti_hour, ct.ti_min, ct.ti_sec, proga);
+      fclose (hDebugFile);
+   }
+   else;
+*/
+//#endif
+
 #ifndef NALAD
 //cvets=getcolor();
 //setcolor(cvets);

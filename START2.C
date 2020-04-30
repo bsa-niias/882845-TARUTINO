@@ -726,12 +726,40 @@ void formula(int fu)
     exit(1);
   }
 
+  /*
   in=0;prob=0;
   while(chislo[in-1]!=32)read(fu,&chislo[in++],1);
   chislo[in]=0;
   //считывание адреса для ТУМС-1
   BAZ_ADR1=(chislo[2]-48)*256+(chislo[3]-48)*16+chislo[4]-48;
-	while(prob!='\n')read(fu,&prob,1);//поиск конца строки
+  while(prob!='\n')read(fu,&prob,1);//поиск конца строки
+  */
+  in=0;prob=0;
+  while (chislo[in-1]!=32)
+	read(fu,&chislo[in++],1);
+  chislo[in]=0;
+  //считывание адреса для ТУМС-1
+  //BAZ_ADR1=(chislo[2]-48)*256+(chislo[3]-48)*16+chislo[4]-48;
+  BAZ_ADR1 = 0;
+  if ((chislo[2] >= '0') && (chislo[2] <= '9'))
+     BAZ_ADR1 = (chislo[2]-48)*256;
+  else
+  if ((chislo[2] >= 'A') && (chislo[2] <= 'F'))
+     BAZ_ADR1 = (chislo[2]-55)*256;
+  else;
+  if ((chislo[3] >= '0') && (chislo[3] <= '9'))
+     BAZ_ADR1 = BAZ_ADR1 + (chislo[3]-48)*16;
+  else
+  if ((chislo[3] >= 'A') && (chislo[3] <= 'F'))
+     BAZ_ADR1 = BAZ_ADR1 + (chislo[3]-55)*16;
+  else;
+  if ((chislo[4] >= '0') && (chislo[4] <= '9'))
+     BAZ_ADR1 = BAZ_ADR1 + (chislo[4]-48);
+  else
+  if ((chislo[4] >= 'A') && (chislo[4] <= 'F'))
+     BAZ_ADR1 = BAZ_ADR1 + (chislo[4]-55);
+  else;
+  while(prob!='\n')read(fu,&prob,1);  //поиск конца строки
 
   in=0;prob=0;
   while(chislo[in-1]!=32)read(fu,&chislo[in++],1);
@@ -755,9 +783,11 @@ void formula(int fu)
   in=0;prob=0;
   while(chislo[in-1]!=32)read(fu,&chislo[in++],1);
 	chislo[in]=0;
+
   //считывание адреса для ББКП
   BAZ_ADR2=(chislo[2]-48)*256+(chislo[3]-48)*16+chislo[4]-48;
 	while(prob!='\n')read(fu,&prob,1);//поиск конца строки
+  BAZ_ADR2 = 0;
 
   in=0;prob=0;
   while(chislo[in-1]!=32)read(fu,&chislo[in++],1);
